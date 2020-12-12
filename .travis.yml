@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - 15
+  - 14
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+jobs:
+  include:
+    - script:
+        - cd frontend
+        - yarn prettier --check .
+        - yarn
+        - yarn build
+        - yarn test
+    - script:
+        - cd backend
+        - npx prettier --check .
+        - npm install
